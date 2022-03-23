@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+
+    <form action="/read" class="inline">
+      <div align="center">
+        <br />
+        <br />
+        <button class="btn btn-info">List of Books Read</button>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-info" formaction="/sign-up">Currently Reading</button>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-info" formaction="/sign-up">Whishlist</button>
+      </div>
+  </form>
+
+
+    {% endblock %}

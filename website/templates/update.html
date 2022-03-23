@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% block title %}Update{% endblock %} 
+{% block content%} 
+<fieldset style="margin: 8px; border: 1px solid silver;padding: 8px;border-radius: 4px;">
+    <form action = "/update/{{row_to_update.id}}" method="POST" class="row g-3">
+      <div class="col-md-4">
+        <label for="book_title" class="form-label">Book Title</label>
+        <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Enter book name"
+        value="{{row_to_update.book_title}}">
+      </div>
+      <div class="col-md-4">
+        <label for="book_author" class="form-label">Author Name</label>
+        <input type="text" class="form-control" id="book_author" name="book_author" placeholder="Enter Author Name"
+        value="{{row_to_update.book_author}}">
+      </div>
+
+      <div class="col-md-2">
+        <label for="rating" class="form-label">Rating</label>
+        <select id="rating" name="rating" class="form-select" aria-label="Default select example"
+        value="{{row_to_update.rating}}">
+          <option value="">Choose an Rating</option>
+          <option value="1" >1 Star</option>
+          <option value="2">2 Star </option>
+          <option value="3">3 Star</option>
+          <option value="4">4 Star</option>
+          <option value="5">5 Star</option>
+        </select>
+      </div>
+      <div class="col-md-2"><br />
+        <button type="submit" class="btn btn-primary">Update Book</button>
+      </div>
+    </form>
+  </fieldset>
+
+
+
+{% endblock %}

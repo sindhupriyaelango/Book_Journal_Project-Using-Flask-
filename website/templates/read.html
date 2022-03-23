@@ -1,0 +1,67 @@
+{% extends "base.html" %} 
+{% block title %}Read{% endblock %} 
+{% block content%}  
+    <fieldset style="margin: 8px; border: 1px solid silver;padding: 8px;border-radius: 4px;">
+      <form method="POST" class="row g-3">
+        <div class="col-md-4">
+          <label for="book_title" class="form-label">Book Title</label>
+          <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Enter book name">
+        </div>
+        <div class="col-md-4">
+          <label for="book_author" class="form-label">Author Name</label>
+          <input type="text" class="form-control" id="book_author" name="book_author" placeholder="Enter Author Name">
+        </div>
+
+        <div class="col-md-2">
+          <label for="rating" class="form-label">Rating</label>
+          <select id="rating" name="rating" class="form-select" aria-label="Default select example">
+          <!-- <select id="rating" name="rating" class="selectpicker form-control"> --> 
+            <option value="">Choose an Rating</option>
+            <option value="1" >1 Star</option>
+            <option value="2">2 Star </option>
+            <option value="3">3 Star</option>
+            <option value="4">4 Star</option>
+            <option value="5">5 Star</option>
+          </select>
+        </div>
+        <div class="col-md-2"><br />
+          <button type="submit" class="btn btn-primary">Add Book</button>
+        </div>
+      </form>
+    </fieldset>
+    <br />    
+    <br />
+
+        <h3 align="center" class="text-muted">Books List (Read)</h3>
+        <table class="table table-striped">
+          <thead style="background-color: #69857c;">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Book Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Date Added</th>
+              <th scope="col">Action</th>
+            </tr>
+            </thead>    
+            <tbody>
+
+              {% for row in user.books_read %}   
+                    <tr>
+                      <td>{{loop.index}}</td>
+                      <td>{{row.book_title.title()}}</td>
+                      <td>{{row.book_author.title()}}</td>
+                      <td>{{row.rating}}</td>
+                      <td>{{row.date_added.date()}}</td>
+                      <td>
+                        <a href="/update/{{row.id}}" class="btn btn-outline-secondary btn-sm">Update</a>
+                        <a href="/delete/{{row.id}}" class="btn btn-danger btn-sm">Delete</a>
+                      </td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+{% endblock %}
